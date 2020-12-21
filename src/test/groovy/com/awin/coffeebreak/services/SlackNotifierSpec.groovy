@@ -14,7 +14,7 @@ class SlackNotifierSpec extends Specification {
         staff.setSlackIdentifier("ABC123")
         def preference = new CoffeeBreakPreference("drink", "coffee", staff, null)
 
-        def notificationService = new SlackNotifier()
+        def notificationService = new SlackNotifierService()
 
         when:
         def status = notificationService.notifyStaffMember(staff, [preference])
@@ -27,7 +27,7 @@ class SlackNotifierSpec extends Specification {
         given:
         def staff = new StaffMember()
         def preference = new CoffeeBreakPreference("drink", "tea", staff, null)
-        def notificationService = new SlackNotifier()
+        def notificationService = new SlackNotifierService()
 
         when:
         def status = notificationService.notifyStaffMember(staff, [preference])

@@ -13,19 +13,19 @@ import javax.persistence.Table;
 public class StaffMember {
 
     @Id
-    Integer id;
+    private Integer id;
 
-    @Column
-    String name;
+    @Column(name = "staff_name")
+    private String name;
 
-    @Column
-    String email;
+    @Column(name = "email_id")
+    private String email;
 
-    @Column
-    String slackIdentifier;
+    @Column(name = "slack_id")
+    private String slackIdentifier;
 
-    @OneToMany
-    List<CoffeeBreakPreference> coffeeBreakPreferences = new ArrayList<>();
+    @OneToMany(mappedBy = "requestedBy")
+    private List<CoffeeBreakPreference> coffeeBreakPreferences = new ArrayList<>();
 
     public Integer getId() {
         return id;

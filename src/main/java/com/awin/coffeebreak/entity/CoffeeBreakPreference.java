@@ -1,15 +1,13 @@
 package com.awin.coffeebreak.entity;
 
-import java.sql.Date;
 import java.time.Instant;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -24,22 +22,23 @@ public class CoffeeBreakPreference {
     public static List<String> FOOD_TYPES = List.of("sandwich", "crisps", "toast");
 
     @Id
-    Integer id;
+    private Integer id;
 
-    @Column
-    String type;
+    @Column(name = "type")
+    private String type;
 
-    @Column
-    String subType;
+    @Column(name = "subtype")
+    private String subType;
 
     @ManyToOne
-    StaffMember requestedBy;
+    private StaffMember requestedBy;
 
-    @Column
-    Instant requestedDate;
+    @Column(name = "requested_date")
+    private Instant requestedDate;
 
-    @Column
-    Map<String, String> details;
+    @ElementCollection
+    @Column(name = "Details")
+    private Map<String, String> details;
 
     public CoffeeBreakPreference(
           final String type, final String subType, final StaffMember requestedBy, final Map<String, String> details
